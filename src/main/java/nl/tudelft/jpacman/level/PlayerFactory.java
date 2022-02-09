@@ -10,6 +10,11 @@ import nl.tudelft.jpacman.sprite.PacManSprites;
 public class PlayerFactory {
 
     /**
+     * The amount of lives to start with.
+     */
+    private final int lives = 3;
+
+    /**
      * The sprite store containing the Pac-Man sprites.
      */
     private final PacManSprites sprites;
@@ -30,7 +35,7 @@ public class PlayerFactory {
      * @return A new player.
      */
     public Player createPacMan() {
-        return new Player(getSprites().getPacmanSprites(), getSprites().getPacManDeathAnimation());
+        return new Player(getSprites().getPacmanSprites(), getSprites().getPacManDeathAnimation(), lives);
     }
 
     /**
