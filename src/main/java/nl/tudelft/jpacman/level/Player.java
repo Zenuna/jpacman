@@ -30,11 +30,6 @@ public class Player extends Unit {
     private final AnimatedSprite deathSprite;
 
     /**
-     * <code>true</code> iff this player is alive.
-     */
-//    private boolean alive;
-
-    /**
      * <code>true</code> iff this player just lost a life.
      */
     private boolean died;
@@ -61,7 +56,6 @@ public class Player extends Unit {
         this.score = 0;
         this.lives = 3;
         this.died = false;
-        //this.alive = true;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
         deathSprite.setAnimating(false);
@@ -76,13 +70,26 @@ public class Player extends Unit {
         return this.lives > 0;
     }
 
+
+    /**
+     * Returns whether this player collided with a ghost.
+     *
+     * @return <code>true</code> iff the player collided with a ghost.
+     */
     public boolean hasDied() {
         return this.died;
     }
 
+    /**
+     * Sets whether this player collided with a ghost or not.
+     *
+     * @param isDead
+     *            <code>true</code> iff this player collided with a ghost.
+     */
     public void setDied(boolean isDead) {
         this.died = isDead;
     }
+
     /**
      * Sets whether this player is alive or not.
      *
@@ -102,7 +109,6 @@ public class Player extends Unit {
             this.lives -= 1;
             deathSprite.restart();
         }
-        //this.alive = isAlive;
     }
 
     /**
