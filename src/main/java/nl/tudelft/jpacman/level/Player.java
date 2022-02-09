@@ -34,6 +34,10 @@ public class Player extends Unit {
      */
     private boolean died;
 
+    public int getLives() {
+        return lives;
+    }
+
     /**
      * <code>int</code> amount of lives.
      */
