@@ -5,6 +5,8 @@ import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit;
 import nl.tudelft.jpacman.sprite.Sprite;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,7 @@ public abstract class Ghost extends Unit {
      */
     private final int intervalVariation;
 
+    private Random rand = SecureRandom.getInstanceStrong();
     /**
      * Calculates the next move for this unit and returns the direction to move
      * in.
@@ -60,7 +63,7 @@ public abstract class Ghost extends Unit {
      * @param moveInterval      The base interval of movement.
      * @param intervalVariation The variation of the interval.
      */
-    protected Ghost(Map<Direction, Sprite> spriteMap, int moveInterval, int intervalVariation) {
+    protected Ghost(Map<Direction, Sprite> spriteMap, int moveInterval, int intervalVariation) throws NoSuchAlgorithmException {
         this.sprites = spriteMap;
         this.intervalVariation = intervalVariation;
         this.moveInterval = moveInterval;
@@ -77,7 +80,7 @@ public abstract class Ghost extends Unit {
      * @return The suggested delay between moves in milliseconds.
      */
     public long getInterval() {
-        return this.moveInterval + new Random().nextInt(this.intervalVariation);
+        return (long) (this.moveInterval + this.rand.nextInt(this.intervalVariation));
     }
 
     /**
@@ -97,7 +100,7 @@ public abstract class Ghost extends Unit {
         if (directions.isEmpty()) {
             return null;
         }
-        int i = new Random().nextInt(directions.size());
+        int i = this.rand.nextInt(directions.size());
         return directions.get(i);
     }
 }
