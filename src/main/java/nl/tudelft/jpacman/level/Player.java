@@ -67,7 +67,7 @@ public class Player extends Unit {
      * @return <code>true</code> iff the player is alive.
      */
     public boolean isAlive() {
-        return this.lives > 0;
+        return this.lives>0;
     }
 
 
