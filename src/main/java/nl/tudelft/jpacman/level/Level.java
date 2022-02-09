@@ -188,6 +188,10 @@ public class Level {
                 unit.occupy(destination);
                 for (Unit occupant : occupants) {
                     collisions.collide(unit, occupant);
+                    if(players.get(0).hasDied()){
+                        players.get(0).occupy(this.startSquares.get(this.startSquareIndex));
+                        players.get(0).setDied(false);
+                    }
                 }
             }
             updateObservers();
