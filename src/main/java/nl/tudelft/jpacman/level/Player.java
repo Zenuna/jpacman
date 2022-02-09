@@ -35,7 +35,7 @@ public class Player extends Unit {
 //    private boolean alive;
 
     /**
-     * <code>true</code> iff this player just lost a life
+     * <code>true</code> iff this player just lost a life.
      */
     private boolean died;
 
@@ -73,12 +73,16 @@ public class Player extends Unit {
      * @return <code>true</code> iff the player is alive.
      */
     public boolean isAlive() {
-        return this.lives>0;
+        return this.lives > 0;
     }
 
-    public boolean hasDied() { return this.died; }
+    public boolean hasDied() {
+        return this.died;
+    }
 
-    public void setDied(boolean isDead) { this.died = isDead; }
+    public void setDied(boolean isDead) {
+        this.died = isDead;
+    }
     /**
      * Sets whether this player is alive or not.
      *
